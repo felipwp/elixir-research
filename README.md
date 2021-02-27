@@ -10,3 +10,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Available routes:
   * `/api/:filename`
+
+
+## Useful commands:
+
+  * `mix ecto.gen.migration create_example_table` Creates a migration file that can be edited later
+  * `mix ecto.migrate` Migrates files to DB

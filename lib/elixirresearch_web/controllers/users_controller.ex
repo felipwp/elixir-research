@@ -3,22 +3,14 @@ defmodule ElixirresearchWeb.UsersController do
 
   alias Elixirresearch.User
 
+  action_fallback ElixirresearchWeb.FallbackController
+
   def create(conn, params) do
-    params
-    |> Elixirresearch.create_user()
-    |> handle_response(conn)
+    with {:ok, %User{} = user} <- Elixirresearch.create_user(params) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", user: user)
+    end
   end
-
-  defp handle_response({:ok, %User{} = user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render("create.json", user: user)
-  end
-
-  defp handle_response({:error, result}, conn) do
-    conn
-    |> put_status(:bad_request)
-    |> put_view(ElixirresearchWeb.ErrorView)
-    |> render("400.json" , result: result)
-  end
+  # defp handle_response({:error, _result} = error, _conn), do: error
 end
