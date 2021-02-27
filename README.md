@@ -9,7 +9,9 @@ To start your Phoenix server:
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Available routes:
-  * `/api/:filename`
+  * `/api/:filename` // testing local files
+  * `/api/users` // create user
+  * `/accounts/:id/deposit` account deposits
 
 
 ## Useful commands:
